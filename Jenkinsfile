@@ -42,7 +42,7 @@ pipeline {
                         buildSelector = openshift.selector('bc', APP_NAME).startBuild("--from-dir .", "--wait", "--follow")
                         echo "Build complete: " + buildSelector.names()
 			}
-                    }
+                    //}
                 }
             }
         }
