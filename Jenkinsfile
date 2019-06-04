@@ -27,7 +27,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    /*openshift.withCluster() {
+                    openshift.withCluster() {
                         buildSelector = openshift.selector('bc', APP_NAME).startBuild("--from-dir .", "--wait", "--follow")
                         echo "Build complete: " + buildSelector.names()
                         script {
@@ -37,12 +37,12 @@ pipeline {
                         script {
                             image_id = sh(script: "curl -H \"Authorization: Bearer wunIfhHypwhc2jrw9QLkCc5aFB7ZYYdD1EpvmCiv\" -X GET \"http://quay-enterprise-quay-enterprise.apps-pr-311.ocp.riccic.com/api/v1/repository/redhat/hello-world-monitoring/tag/?specificTag=latest\" -s | python -c \"import sys,json; print json.load(sys.stdin)['tags'][0]['docker_image_id']\"", returnStdout: true).trim()
 			                test = sh(script: "curl -H \"Authorization: Bearer wunIfhHypwhc2jrw9QLkCc5aFB7ZYYdD1EpvmCiv\" -X PUT --header \"Content-Type:application/json\" -d '{\"image\":\"${image_id}\"}' \"http://quay-enterprise-quay-enterprise.apps-pr-311.ocp.riccic.com/api/v1/repository/redhat/hello-world-monitoring/tag/${number}\"", returnStdout: true).trim()
-                        }*/
-			openshift.withCluster() {
-                        buildSelector = openshift.selector('bc', APP_NAME).startBuild("--from-dir .", "--wait", "--follow")
-                        echo "Build complete: " + buildSelector.names()
-			}
-                    //}
+                        }
+			//openshift.withCluster() {
+                        //buildSelector = openshift.selector('bc', APP_NAME).startBuild("--from-dir .", "--wait", "--follow")
+                        //echo "Build complete: " + buildSelector.names()
+			//}
+                    }
                 }
             }
         }
