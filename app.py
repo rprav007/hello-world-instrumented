@@ -37,7 +37,7 @@ def index():
     #time.sleep(2)
     timestamp2 = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     app.logger.debug("Finished at: " + timestamp2)
-    return timestamp2 + " " + hostname + " Hello, World!! -- From Red Hat -- Hello from NY RHUG\n"
+    return timestamp2 + " " + hostname + " Hello, World!! -- From Red Hat"
 
 if __name__ == '__main__':
     monitor(app, port=8000)
